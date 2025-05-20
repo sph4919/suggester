@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "@google/genai": "^0.15.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.99.8",
+    "webpack-cli": "^6.0.1"
+  },
+  "name": "suggester",
+  "version": "1.0.0",
+  "main": "popup.js",
+  "scripts": {
+    "built" : "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

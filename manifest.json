@@ -1,0 +1,32 @@
+{
+  "name": "Suggester",
+  "description": "It suggest the name of podcast , books and video based on page content you are reading",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "16": "Imgs/logo16.png",
+    "32": "Imgs/logo32.png",
+    "48": "Imgs/logo48.png",
+    "128": "Imgs/logo128.png"
+  },
+  "content_scripts": [
+    {
+      "js": ["srcjs/contentScript.js"],
+        "matches": [ "*://*/*" ]
+
+    }
+  ],
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+
+  },
+  "action": {
+    "default_popup" : "popup.html",
+    "default_icon": "Imgs/suggesterlogo.png"
+  },
+    "permissions": [
+    "activeTab","scripting"
+  ]
+
+}

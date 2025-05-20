@@ -1,0 +1,51 @@
+body {
+    width: 400px;
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    overflow-y: auto;
+}
+
+.container {
+    padding: 10px;
+}
+
+h1 {
+    color: #1a73e8;
+    font-size: 20px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+.section-title {
+    color: #202124;
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #1a73e8;
+}
+
+.podcast-item, .book-item {
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    transition: background-color 0.2s;
+}
+
+.podcast-item:hover, .book-item:hover {
+    background-color: #e8f0fe;
+    cursor: pointer;
+}
+
+.podcast-item {
+    color: #1967d2;
+}
+
+.book-item {
+    color: #137333;
+}
