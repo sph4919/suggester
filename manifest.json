@@ -26,7 +26,7 @@
     "default_icon": "Imgs/suggesterlogo.png"
   },
     "permissions": [
-    "activeTab","scripting"
+    "activeTab"
   ]
 
 }
