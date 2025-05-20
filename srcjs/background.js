@@ -29,7 +29,7 @@ let dataToSend = "";
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ 
-  apiKey: "AIzaSyAefrBmkCJcyg0r5UPYPwG3pg69O15f86E" 
+  apiKey: "" 
 });
 
 // The main function that calls the API.
