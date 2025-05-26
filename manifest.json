@@ -12,7 +12,7 @@
   "content_scripts": [
     {
       "js": ["srcjs/contentScript.js"],
-        "matches": [ "*://*/*" ]
+      "matches": [ "*://*/*" ]
 
     }
   ],
@@ -25,8 +25,9 @@
     "default_popup" : "popup.html",
     "default_icon": "Imgs/suggesterlogo.png"
   },
-    "permissions": [
-    "activeTab"
+   "host_permissions": [
+    "https://suggester-server-0f193070ba02.herokuapp.com/*"
   ]
+
 
 }

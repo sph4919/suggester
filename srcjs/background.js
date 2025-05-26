@@ -1,15 +1,16 @@
 // background.js
 
 let apiResult = "";
+let dataToSend ="";
 
 // Listener to receive data from other parts of the extension.
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   // If the message contains new content, store it in dataToSend.
   if (request.message) {
     dataToSend = request.message;
-
+     console.log(dataToSend);
     sendResponse({ message: "data received" });
-    main();
+    sendRequest();
     return;
   }
 
@@ -22,30 +23,31 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 
-// Global variable to store the received data
-let dataToSend = "";
+function sendRequest()
+{
+const payload = { data: dataToSend };
 
-// Import the GoogleGenAI module (make sure this module is bundled or available as needed)
-import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ 
-  apiKey: "" 
-});
-
-// The main function that calls the API.
-async function main() {
-  // Check if data is present
-  if (!dataToSend) {
-    console.log("No data received yet. Please ensure the content script sends data before clicking the extension icon.");
-    return;
-  }
-  
-    const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
-      contents: `I need 2 podcast links and 2 books names related to the content I am providing in JSON format.I need you to do deep research to find the links and books. I do not need any other information other than podcast links and book names make sure the podcast are latest with updated links and in existance.Do not send anything else. If you dont find any podcast and book the return Not available in json instead of link and podcast.stricly Dont't give podcast link from apple podcast. The content is ${dataToSend}`,
-    });
-    console.log("Generated content:", response.text);
-    apiResult = response.text;
+// Send the string wrapped as a JSON literal
+fetch("https://suggester-server-0f193070ba02.herokuapp.com/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(payload)
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data.result);
+    apiResult = data.result;
+  })
+  .catch(error => {
+    console.error("Error sending POST request:", error);
+  });
 
 }
-
